@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>银行卡登录页面</title>
+</head>
+<body>
+    <div>填写完点击登录</div>
+    <form action="/login/" method="post">
+        {# csrf_token验证 #}
+        {% csrf_token %}
+        <input name="id" type="text" placeholder="请输入银行卡号">
+        <input name="pwd" type="password" placeholder="请输入取款密码">
+        <button type="submit">点击登录 </button>
+        {% if error %}
+            <h1>{{ error }}</h1>
+
+        {% endif %}
+    </form>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模板参数传递</title>
+</head>
+<body>
+
+    <h1>{{ name }}</h1>
+    <h1>{{ age }}</h1>
+    {# for 循环遍历列表 ,取出每一个值 #}
+    <ul>
+        {# 每执行一次for循环,都会新建一个li标签 #}
+        {% for num in numbers %}
+        {#  每次for 循环,都会新建一个li标签 #}
+             {#  forloop.counter(从1开始) counter0(从0开始) 记录循环的次数 .first判断是否为列表的第一个元素#}
+            {# if 可以判断某些条件是否成立 #}
+            {% if forloop.first %}
+            <li>这是第一个元素</li>
+            {% elif forloop.last %}
+            <li>这是最后一个元素</li>
+            {% else %}
+            <li>{{ num }}</li>
+            {% endif %}
+            <li>{{ forloop.counter}}</li>
+        {% endfor %}
+
+    </ul>
+    {#使用if 判断某个参数是否存在  #}
+    {% if dictData %}
+        <h1>dictData这个参数</h1>
+        <h3>{{ dictData.city }}</h3>
+        <h3>{{ dictData.weather }}</h3>
+    {% else %}
+        <h1>没有dictData这个参数</h1>
+
+    {% endif %}
+    {# 穿过来的是自定义对象,直接通过,属性获取属性值 #}
+   <h1> {{poeple.name  }}</h1>
+   <h1> {{people.age  }}</h1>
+   <h1> {{people.phone  }}</h1>
+    {# 填写要访问的路由 #}
+    <a href="/login/">点击登录</a>
+</body>
+</html>
